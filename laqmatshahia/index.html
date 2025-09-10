@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>لقمة شهية - متجر المأكولات الفاخرة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav data-aos="fade-down">
+    <div class="nav-container">
+      <a href="#" class="logo">لقمة شهية</a>
+      <ul class="nav-links">
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#menu">القائمة</a></li>
+        <li><a href="#contact">اتصل بنا</a></li>
+      </ul>
+      <!-- أيقونة السلة -->
+      <div class="cart-icon" id="cartIcon">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+        <div class="cart-dropdown" id="cartDropdown">
+          <div id="cartItems">لا توجد منتجات</div>
+          <div class="cart-total" id="cartTotal">الإجمالي: ٠ ريال</div>
+          <div class="cart-actions">
+            <button class="btn-undo" id="undoBtn" title="تراجع">↶</button>
+            <button class="btn-redo" id="redoBtn" title="إعادة">↷</button>
+          </div>
+          <button class="btn-checkout" id="checkoutBtn">الدفع الآن</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home" data-aos="fade">
+    <div class="hero-content">
+      <h1 data-aos="fade-up" data-aos-delay="200">استمتع بأشهى المأكولات</h1>
+      <p data-aos="fade-up" data-aos-delay="400">تذوق أروع النكهات المصنوعة بحب</p>
+      <a href="#menu" class="btn-primary" data-aos="fade-up" data-aos-delay="600">اطلب الآن</a>
+    </div>
+  </section>
+
+  <!-- المنتجات -->
+  <section class="products" id="menu">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">منتجاتنا المميزة</h2>
+
+      <!-- Gallery -->
+      <div class="gallery">
+        <div class="gallery-item" data-aos="zoom-in"><img src="imgs/cake1.png" alt="كيكة شوكولاتة"></div>
+        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100"><img src="imgs/cinnamon1.png" alt="سينمون رول"></div>
+        <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200"><img src="imgs/shawarma1.png" alt="شاورما"></div>
+      </div>
+
+      <!-- بطاقات المنتجات -->
+      <div class="product-grid">
+        <!-- كيكة شوكولاتة -->
+        <div class="product-card" data-aos="flip-left">
+          <img src="imgs/cake2.png" alt="كيكة شوكولاتة" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">كيكة الشوكولاتة المربعة</h3>
+            <p class="product-description">كيكة شوكولاتة غنية ورطبة مغطاة بصوص الشوكولاتة السائل.</p>
+            <p class="product-price">٣٢ ريال</p>
+            <button class="btn-add-cart" onclick="addToCart('كيكة الشوكولاتة', 32)">أضف إلى السلة</button>
+          </div>
+        </div>
+
+        <!-- سينمون رول -->
+        <div class="product-card" data-aos="flip-left" data-aos-delay="100">
+          <img src="imgs/cinnamon2.png" alt="سينمون رول" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">سينمون رول أصلي</h3>
+            <p class="product-description">رولات هشة وناعمة محشوة بالقرفة والسكر ومغطاة بالكريمة البيضاء.</p>
+            <p class="product-price">٢٨ ريال</p>
+            <button class="btn-add-cart" onclick="addToCart('سينمون رول', 28)">أضف إلى السلة</button>
+          </div>
+        </div>
+
+        <!-- شاورما -->
+        <div class="product-card" data-aos="flip-left" data-aos-delay="200">
+          <img src="imgs/shawarma2.png" alt="شاورما" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">شاورما دجاج أصلية</h3>
+            <p class="product-description">دجاج متبل طري ملفوف في خبز التنور مع خضار طازجة وصلصة الثوم.</p>
+            <p class="product-price">١٩ ريال</p>
+            <button class="btn-add-cart" onclick="addToCart('شاورما دجاج', 19)">أضف إلى السلة</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- صفحة الدفع -->
+  <div class="checkout-page" id="checkoutPage">
+    <div class="checkout-container">
+      <h2 class="checkout-title">إتمام الطلب</h2>
+      <form id="checkoutForm">
+        <div class="form-row">
+          <div class="form-group"><label>الاسم الكامل</label><input type="text" id="fullName" required></div>
+          <div class="form-group"><label>رقم الجوال</label><input type="tel" id="phone" required></div>
+        </div>
+        <div class="form-group"><label>العنوان</label><input type="text" id="address" required></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>طريقة الدفع</label>
+            <select id="paymentMethod" required>
+              <option value="cash">نقداً عند الاستلام</option>
+              <option value="card">بطاقة ائتمان</option>
+            </select>
+          </div>
+          <div class="form-group"><label>ملاحظات (اختياري)</label><input type="text" id="notes"></div>
+        </div>
+        <div class="order-summary" id="orderSummary">
+          <h3>ملخص الطلب</h3>
+          <div id="summaryItems"></div>
+          <div class="summary-total" id="summaryTotal">الإجمالي: ٠ ريال</div>
+        </div>
+        <div class="checkout-actions">
+          <button type="button" class="btn-back" id="backBtn">استمر بالتسوق</button>
+          <button type="submit" class="btn-place">تأكيد الطلب</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="contact" data-aos="fade-up">
+    <div class="footer-content">
+      <h3>لقمة شهية</h3>
+      <p>شارع الذواقة، حي الأطعمة، الرياض</p>
+      <p>هاتف: ٠٥٥٥١٢٣٤٥٦٧ | بريد: info@laqmatshahia.com</p>
+      <div class="social-icons">
+        <a href="#" class="social-icon">ف</a>
+        <a href="#" class="social-icon">ت</a>
+        <a href="#" class="social-icon">ي</a>
+      </div>
+      <p>&copy; ٢٠٢٥ لقمة شهية. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <!-- الملفات الخارجية -->
+  <script src="js/aos.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
